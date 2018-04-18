@@ -18,7 +18,15 @@ response = Net::HTTP.get_response(uri)
 
 #@doc = Nokogiri::XML.parse(response.body)
 @doc = Nokogiri::XML(response.body)
-puts @doc.class
-puts @doc.namespaces
+#puts @doc.class
+#puts @doc.namespaces
 @doc.remove_namespaces!
-puts @doc.xpath('//competitors')
+#puts @doc.xpath('//competitors')i
+count =1
+@doc.xpath('//competitors').each do
+  |competitors_element|
+  puts "\n#{count}:"
+  puts competitors_element
+  count =count+1
+end
+
